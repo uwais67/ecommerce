@@ -23,13 +23,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Use auth routes
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
   res.render('home'); // Render home
  });
 app.use('/', authRoutes);
 // Other middleware and routes can be added here
-app.use('/products', productRoutes); // Use product routes
-app.use('/cart', cartRoutes); // Use cart routes
+app.use('/', productRoutes); // Use product routes
+app.use('/', cartRoutes); // Use cart routes
 // Start the server
 app.listen(3000, () => {
   console.log('Server is running on port 3000');

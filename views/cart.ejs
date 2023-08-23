@@ -1,46 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Shopping Cart</title>
+  <title>Cart</title>
+  <style>
+    /* Include your global styles here */
+
+    /* Cart Styles */
+    .cart-items {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .cart-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    .item-details {
+      flex: 1;
+    }
+
+    .item-name {
+      font-weight: bold;
+    }
+
+    .item-price {
+      color: #007bff;
+    }
+
+    .remove-button {
+      color: #ff0000;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h1>Shopping Cart</h1>
-  
-  <% if (cart && cart.length > 0) { %>
-    <table>
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Total</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% cart.forEach(item => { %>
-          <tr>
-            <td><%= item.product.name %></td>
-            <td>$<%= item.product.price.toFixed(2) %></td>
-            <td>
-              <form action="/cart/update-cart/<%= item.product._id %>" method="post">
-                <input type="number" name="quantity" value="<%= item.quantity %>" min="1">
-                <button type="submit">Update</button>
-              </form>
-            </td>
-            <td>$<%= (item.product.price * item.quantity).toFixed(2) %></td>
-            <td>
-              <form action="/cart/remove-from-cart/<%= item.product._id %>" method="post">
-                <button type="submit">Remove</button>
-              </form>
-            </td>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
-    <a href="/checkout">Proceed to Checkout</a>
-  <% } else { %>
-    <p>Your cart is empty.</p>
-  <% } %>
+  <header>
+    <!-- Header content here -->
+  </header>
+
+  <main>
+    <h2>Your Cart</h2>
+    <ul class="cart-items">
+      <li class="cart-item">
+        <img src="/images/product1.jpg" alt="Product 1">
+        <div class="item-details">
+          <span class="item-name">Product 1</span>
+          <span class="item-price">$29.99</span>
+        </div>
+        <span class="remove-button">Remove</span>
+      </li>
+      <!-- Add more cart items here -->
+    </ul>
+  </main>
+
+  <footer>
+    <!-- Footer content here -->
+  </footer>
 </body>
 </html>
