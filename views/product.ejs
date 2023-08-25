@@ -1,77 +1,75 @@
+<!-- views/products.ejs -->
 <!DOCTYPE html>
 <html>
 <head>
   <title>Products</title>
   <style>
-    /* Include your global styles here */
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
 
-    /* Products Styles */
-    .product-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-    }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-    .product-card {
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease;
-    }
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
+.product-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
 
-    .product-image {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
+.product-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
 
-    /* Add to Cart Button */
-    .add-to-cart {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+.product-image {
+  max-width: 100%;
+  height: auto;
+}
 
-    .add-to-cart:hover {
-      background-color: #0056b3;
-    }
+.product-title {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.product-price {
+  font-size: 1.1rem;
+  color: #e74c3c;
+}
+
+.product-description {
+  margin-top: 10px;
+}
   </style>
 </head>
 <body>
-  <header>
-    <!-- Header content here -->
-  </header>
-
-  <main>
-    <section class="product-list">
-      <div class="product-card">
-        <!-- Product 1 content here -->
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
-        <!-- Product 2 content here -->
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-
-      <!-- Add more product cards here -->
-    </section>
-  </main>
-
-  <footer>
-    <!-- Footer content here -->
-  </footer>
+  <div class="container">
+    <h1>Product List</h1>
+    <ul class="product-list">
+      <% products.forEach(product => { %>
+        <li class="product-card">
+          <img src="<%= product.imageUrl %>" alt="<%= product.name %>" class="product-image">
+          <h2 class="product-title"><%= product.name %></h2>
+          <p class="product-price">$<%= product.price.toFixed(2) %></p>
+          <p class="product-description"><%= product.description %></p>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const db = require('./db');
 const session = require('express-session');
 const passport = require('./passport'); // Import your passport.js configuration
 const authRoutes = require('./routes/auth'); // Import auth routes
